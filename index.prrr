@@ -1,0 +1,142 @@
+<style>
+body {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+
+	background-color: #1a1111;
+	color: #eee;
+}
+
+h1, h2, h3 { margin: 0 }
+
+#pages {
+	height: 100vh;
+	overflow-y: scroll;
+	scroll-snap-type: y mandatory;
+}
+.page {
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	scroll-snap-align: start;
+
+	display: flex;
+	justify-content: center;
+}
+
+.card {
+	background-color: #0a0000;
+	font-size: 2em;
+
+	margin: 0;
+	padding: 2em;
+
+	display: flex;
+	align-items: center;
+	width: 60vw
+}
+
+.card img { display: block; min-height: 60%; height: 10em }
+
+.songinfo {
+	padding: 2em
+}
+</style>
+
+#def /«\s*([^\s]+)\s+([0-9.]+)\s+(.+?)»/m
+<div class="page">
+	<div class="card">
+		<img src="media/@1.jpg">
+		<audio class="song" preload="auto" src="media/@1.flac" start="@2">oopsies!</audio>
+		<div class="songinfo">
+			@3
+		</div>
+	</div>
+</div>
+#fed
+
+<div id="pages">
+
+	<div class="page">
+		<div class="card">
+			<blockquote>
+				<h1>hello</h1>
+				<h2>welcome to my 特に気に入った曲s!</h2>
+				<h3>these are some 曲s that 入ったed my 気.</h3>
+				<p>
+					use ↑, ↓ to navigate songs!<br>
+					use ←, →, to adjust volume.<br>
+					<i>note: you may need to click in the window before using arrow keys</i>
+				</p>
+			</blockquote>
+		</div>
+	</div>
+
+	« badaboom 52.65 WJSN - BADABOOM »
+	« coolhotsweetlove 49.8 Red Velvet - Cool Hot Sweet Love »
+	« nobodylikeyou 53.7 ITZY - NOBODY LIKE YOU »
+	« 나의_밤 48.24 EXID - 나의 밤 »
+	« dundun 46.7 Everglow - DUN DUN »
+	« enough 35.05 Apink - Enough »
+	« hereweare 46.66 GFRIEND - Here We Are »
+	« number1 45.95 LOONA - Number 1 »
+	« bingbing 53.45 Nature - Bing Bing »
+	« bimbambum 47.2 Rocket Punch - BIM BAM BUM »
+	« pickypicky 51.64 Weki Meki - Picky Picky »
+	« daydream 54.44 IZ*ONE - DAYDREAM »
+	« dramatic 45.6 BVNDIT - Dramatic »
+	« sahara    53.64  Dreamcatcher - Sahara »
+	« oh_my_god 51.45  (G)I-DLE - Oh my god »
+	« 하루에_세번  59.45  Twice - 하루에 세번 »
+	« pianoman  64.6  Mamamoo - Piano Man »
+
+</div>
+
+<script>
+const PAGES  = document.querySelector('#pages')
+const AUDIOS = document.querySelectorAll('.song')
+const VOLUME_KEY = 'max_volume'
+
+let max_vol = parseFloat(window.localStorage.getItem(VOLUME_KEY))
+if (!max_vol)
+	max_vol = 0.5
+
+let curr = AUDIOS[0]
+
+window.addEventListener('keydown', function(e) {
+
+	console.log(e.key)
+
+	if (e.key === 'ArrowLeft')
+		max_vol = Math.max(0, max_vol - 0.1)
+	else if (e.key === 'ArrowRight')
+		max_vol = Math.min(1, max_vol + 0.1)
+	else
+		return
+
+	curr.volume = max_vol
+	window.localStorage.setItem(VOLUME_KEY, max_vol)
+})
+
+PAGES.addEventListener('scroll', function(e) {
+	curr.volume = Math.max(0, curr.volume - 0.045*max_vol)
+
+	console.log(this.scrollTop, this.offsetHeight)
+	if(this.scrollTop % this.offsetHeight == 0)
+		play(this.scrollTop / this.offsetHeight)
+})
+
+function play(i)
+{
+	curr.pause()
+
+	if (i == 0) // intro page
+		return
+	curr = AUDIOS[i - 1]
+
+	curr.volume = max_vol
+	curr.currentTime = curr.getAttribute('start')
+	curr.play()
+}
+</script>
