@@ -1,0 +1,59 @@
+<input id="path" type="text" /><br />
+<input id="time" type="text" /><br />
+<input id="outp" type="text" />
+
+<script>
+
+const PATH = document.querySelector('#path')
+const TIME = document.querySelector('#time')
+const OUTP = document.querySelector('#outp')
+
+let curr = null
+
+time.addEventListener('keydown', e => {
+
+	const curr_num = Number(TIME.value)
+
+	if (!curr_num)
+		return
+
+	if (e.key === 'ArrowRight')
+		TIME.value = (curr_num + 0.1).toFixed(3)
+	else if (e.key === 'ArrowLeft')
+		TIME.value = (curr_num - 0.1).toFixed(3)
+	else if (e.key === 'ArrowUp')
+		TIME.value = (curr_num + 0.025).toFixed(3)
+	else if (e.key === 'ArrowDown')
+		TIME.value = (curr_num - 0.025).toFixed(3)
+	else if (e.key === ' ')
+		e.preventDefault()
+	else if (e.key === 'r')
+		e.preventDefault(), curr.src = `media/${PATH.value}.flac`
+	else if (e.key === 'c') {
+
+		e.preventDefault()
+		OUTP.select()
+		document.execCommand('copy')
+		TIME.focus()
+
+	} else if (e.key === 's') {
+		e.preventDefault()
+		curr.pause()
+		return
+	} else {
+		return
+	}
+
+	if (!curr) {
+		curr = new Audio()
+		curr.src = `media/${PATH.value}.flac`
+	}
+
+	curr.play()
+	curr.currentTime = TIME.value
+
+	OUTP.value = `« ${PATH.value} ${TIME.value} ${PATH.value} »`
+})
+
+
+</script>

@@ -1,0 +1,198 @@
+<style>
+body {
+	background-color: #1a1111;
+	color: #eee;
+}
+
+h1, h2, h3 { margin: 0 }
+
+#pages {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.page {
+	margin: 0;
+	padding: 0;
+
+	width: 30em;
+
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.card {
+	background-color: #0a0000;
+
+	display: flex;
+	align-items: center;
+	width: 10em
+}
+
+.card img { display: block; min-height: 60%; height: 10em }
+
+.songinfo {
+	display: none
+}
+</style>
+
+#def /« ([^\s]+)\s+([0-9.]+)\s+(.+?) »/
+<div class="card" id="@1">
+	<a href="javascript:play('@1')">
+		<img src="media/@1.jpg">
+	</a>
+	<audio class="song" autoplay volume="0" preload="auto" src="media/@1.flac" start="@2">oopsies!</audio>
+	<div class="songinfo">
+		@3
+	</div>
+</div>
+#fed
+
+#def /([^\s]+)\s+-> ([^\s]+)\s+([^\s]+)$/
+#define /media\/@1.jpg/ https://i.imgur.com/@2.jpg
+#define /media\/@1.flac/ https://files.catbox.moe/@3.webm
+#fed
+
+hann             -> 6pg5iK5 6o0j8k
+maze             -> qgZH8MO aunlzk
+rend186          -> W94znxm yd3rja
+badaboom         -> X9cSfzb 2ar06t
+bimbambum        -> gMqXljA lnw0nf
+bingbing         -> 7tSo4TF 09ac4w
+coolhotsweetlove -> JGLWTYS jxyip9
+daydream         -> kdjLL3n 9yn2fr
+dramatic         -> e40oVNN d49aha
+dundun           -> tYTa88o wcgni5
+enough           -> wWskOcL 8xdzw7
+hereweare        -> lc72mRV 7g1rnf
+nobodylikeyou    -> DeumFO9 alynqf
+number1          -> qDjRd94 9fh9s8
+oh_my_god        -> Dg4g9Xx kneawp
+pianoman         -> rkSEH3u 5cqmb5
+pickypicky       -> 2i2zuva y2ejb5
+sahara           -> QOYVc6O oph7r9
+봐                -> QfMqBuz bq8sgy
+나의_밤             -> qHMS9kq xk7dz9
+하루에_세번           -> 1l14Ra3 kud9qj
+
+<div id="pages">
+
+	<div class="page">
+		<blockquote>
+			<h1>hello</h1>
+			<h2>welcome to my 特に気に入った曲s!</h2>
+			<h3>these are some 曲s that 入ったed my 気.</h3>
+		</blockquote>
+	</div>
+	<div class="page">
+		« rend186 45.380 rend186 »
+		« 봐 77.400 봐 »
+		« hann 64.350 hann »
+		« maze 56.300 maze »
+		« badaboom 52.65 WJSN - BADABOOM »
+		« coolhotsweetlove 49.8 Red Velvet - Cool Hot Sweet Love »
+		« nobodylikeyou 53.7 ITZY - NOBODY LIKE YOU »
+		« 나의_밤 48.24 EXID - 나의 밤 »
+		« dundun 46.7 Everglow - DUN DUN »
+		« enough 35.05 Apink - Enough »
+		« hereweare 46.66 GFRIEND - Here We Are »
+		« number1 45.95 LOONA - Number 1 »
+		« bingbing 53.45 Nature - Bing Bing »
+		« bimbambum 47.2 Rocket Punch - BIM BAM BUM »
+		« pickypicky 51.64 Weki Meki - Picky Picky »
+		« daydream 54.44 IZ*ONE - DAYDREAM »
+		« dramatic 45.6 BVNDIT - Dramatic »
+		« sahara    53.64  Dreamcatcher - Sahara »
+		« oh_my_god 51.45  (G)I-DLE - Oh my god »
+		« 하루에_세번  59.45  Twice - 하루에 세번 »
+		« pianoman  64.6  Mamamoo - Piano Man »
+	</div>
+</div>
+
+<script>
+const PAGES  = document.querySelector('#pages')
+const AUDIOS = document.querySelectorAll('.song')
+const VOLUME_KEY = 'max_volume'
+
+// did autoplay for all of them to try to preload
+AUDIOS.forEach(a => a.pause())
+
+let max_vol = parseFloat(window.localStorage.getItem(VOLUME_KEY))
+if (!max_vol)
+	max_vol = 0.5
+
+let curr = null
+
+window.addEventListener('keydown', function(e) {
+
+	console.log(e.key)
+
+	if (e.key === 'ArrowLeft')
+		max_vol = Math.max(0, max_vol - 0.1)
+	else if (e.key === 'ArrowRight')
+		max_vol = Math.min(1, max_vol + 0.1)
+	else
+		return
+
+	curr.volume = max_vol
+	window.localStorage.setItem(VOLUME_KEY, max_vol)
+})
+
+function play(song_id) {
+	const to_play = document.querySelector(`#${song_id} audio`)
+
+	if (!to_play)
+		return;
+
+	if (to_play == curr) {
+		linFade(curr, 0, 500, 25)
+		curr = null;
+		return;
+	}
+
+	to_play.currentTime = to_play.getAttribute('start')
+	to_play.volume = 0
+	to_play.play()
+
+	linFade(to_play, max_vol, 250, 25)
+	linFade(curr, 0, 500, 25)
+
+	curr = to_play
+}
+
+function linFade(audio, end_vol, ms, smooth=100) {
+
+	if (audio == null)
+		return
+
+	const start_vol = audio.volume;
+	const start_time = Date.now()
+	const ending_time = ms + start_time
+
+	let code;
+
+	const update = () => {
+		const curr_time = Date.now()
+
+		if (ending_time < curr_time) {
+			clearInterval(code)
+
+			audio.volume = end_vol
+
+			if(end_vol == 0)
+				audio.pause()
+		}
+
+		const calculated_vol = start_vol + (curr_time - start_time) / (ending_time - start_time) * (end_vol - start_vol)
+
+		if(0 < calculated_vol && calculated_vol < 1) {
+			audio.volume = calculated_vol
+		}
+
+	}
+
+	code = setInterval(update, ms/smooth)
+}
+</script>

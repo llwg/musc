@@ -1,0 +1,330 @@
+<style>
+body {
+	background-color: #1a1111;
+	color: #eee;
+}
+
+h1, h2, h3 { margin: 0 }
+
+#pages {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.page {
+	margin: 0;
+	padding: 0;
+
+	width: 30em;
+
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.card {
+	background-color: #0a0000;
+
+	display: flex;
+	align-items: center;
+	width: 10em
+}
+
+.card img { display: block; min-height: 60%; height: 10em }
+
+.songinfo {
+	display: none
+}
+</style>
+
+
+
+
+<div id="pages">
+
+	<div class="page">
+		<blockquote>
+			<h1>hello</h1>
+			<h2>welcome to my 特に気に入った曲s!</h2>
+			<h3>these are some 曲s that 入ったed my 気.</h3>
+		</blockquote>
+	</div>
+	<div class="page">
+		<div class="card" id="rend186">
+			<a href="javascript:play('rend186')">
+				<img src="https://i.imgur.com/W94znxm.jpg">
+			</a>
+			<audio class="song" autoplay volume="0" preload="auto" src="https://files.catbox.moe/yd3rja.webm" start="45.380">oopsies!</audio>
+			<div class="songinfo">
+				rend186
+			</div>
+		</div>
+		<div class="card" id="봐">
+			<a href="javascript:play('봐')">
+				<img src="https://i.imgur.com/QfMqBuz.jpg">
+			</a>
+			<audio class="song" autoplay volume="0" preload="auto" src="https://files.catbox.moe/bq8sgy.webm" start="77.400">oopsies!</audio>
+			<div class="songinfo">
+				봐
+			</div>
+		</div>
+		<div class="card" id="hann">
+			<a href="javascript:play('hann')">
+				<img src="https://i.imgur.com/6pg5iK5.jpg">
+			</a>
+			<audio class="song" autoplay volume="0" preload="auto" src="https://files.catbox.moe/6o0j8k.webm" start="64.350">oopsies!</audio>
+			<div class="songinfo">
+				hann
+			</div>
+		</div>
+		<div class="card" id="maze">
+			<a href="javascript:play('maze')">
+				<img src="https://i.imgur.com/qgZH8MO.jpg">
+			</a>
+			<audio class="song" autoplay volume="0" preload="auto" src="https://files.catbox.moe/aunlzk.webm" start="56.300">oopsies!</audio>
+			<div class="songinfo">
+				maze
+			</div>
+		</div>
+		<div class="card" id="badaboom">
+			<a href="javascript:play('badaboom')">
+				<img src="https://i.imgur.com/X9cSfzb.jpg">
+			</a>
+			<audio class="song" autoplay volume="0" preload="auto" src="https://files.catbox.moe/2ar06t.webm" start="52.65">oopsies!</audio>
+			<div class="songinfo">
+				WJSN - BADABOOM
+			</div>
+		</div>
+		<div class="card" id="coolhotsweetlove">
+			<a href="javascript:play('coolhotsweetlove')">
+				<img src="https://i.imgur.com/JGLWTYS.jpg">
+			</a>
+			<audio class="song" autoplay volume="0" preload="auto" src="https://files.catbox.moe/jxyip9.webm" start="49.8">oopsies!</audio>
+			<div class="songinfo">
+				Red Velvet - Cool Hot Sweet Love
+			</div>
+		</div>
+		<div class="card" id="nobodylikeyou">
+			<a href="javascript:play('nobodylikeyou')">
+				<img src="https://i.imgur.com/DeumFO9.jpg">
+			</a>
+			<audio class="song" autoplay volume="0" preload="auto" src="https://files.catbox.moe/alynqf.webm" start="53.7">oopsies!</audio>
+			<div class="songinfo">
+				ITZY - NOBODY LIKE YOU
+			</div>
+		</div>
+		<div class="card" id="나의_밤">
+			<a href="javascript:play('나의_밤')">
+				<img src="https://i.imgur.com/qHMS9kq.jpg">
+			</a>
+			<audio class="song" autoplay volume="0" preload="auto" src="https://files.catbox.moe/xk7dz9.webm" start="48.24">oopsies!</audio>
+			<div class="songinfo">
+				EXID - 나의 밤
+			</div>
+		</div>
+		<div class="card" id="dundun">
+			<a href="javascript:play('dundun')">
+				<img src="https://i.imgur.com/tYTa88o.jpg">
+			</a>
+			<audio class="song" autoplay volume="0" preload="auto" src="https://files.catbox.moe/wcgni5.webm" start="46.7">oopsies!</audio>
+			<div class="songinfo">
+				Everglow - DUN DUN
+			</div>
+		</div>
+		<div class="card" id="enough">
+			<a href="javascript:play('enough')">
+				<img src="https://i.imgur.com/wWskOcL.jpg">
+			</a>
+			<audio class="song" autoplay volume="0" preload="auto" src="https://files.catbox.moe/8xdzw7.webm" start="35.05">oopsies!</audio>
+			<div class="songinfo">
+				Apink - Enough
+			</div>
+		</div>
+		<div class="card" id="hereweare">
+			<a href="javascript:play('hereweare')">
+				<img src="https://i.imgur.com/lc72mRV.jpg">
+			</a>
+			<audio class="song" autoplay volume="0" preload="auto" src="https://files.catbox.moe/7g1rnf.webm" start="46.66">oopsies!</audio>
+			<div class="songinfo">
+				GFRIEND - Here We Are
+			</div>
+		</div>
+		<div class="card" id="number1">
+			<a href="javascript:play('number1')">
+				<img src="https://i.imgur.com/qDjRd94.jpg">
+			</a>
+			<audio class="song" autoplay volume="0" preload="auto" src="https://files.catbox.moe/9fh9s8.webm" start="45.95">oopsies!</audio>
+			<div class="songinfo">
+				LOONA - Number 1
+			</div>
+		</div>
+		<div class="card" id="bingbing">
+			<a href="javascript:play('bingbing')">
+				<img src="https://i.imgur.com/7tSo4TF.jpg">
+			</a>
+			<audio class="song" autoplay volume="0" preload="auto" src="https://files.catbox.moe/09ac4w.webm" start="53.45">oopsies!</audio>
+			<div class="songinfo">
+				Nature - Bing Bing
+			</div>
+		</div>
+		<div class="card" id="bimbambum">
+			<a href="javascript:play('bimbambum')">
+				<img src="https://i.imgur.com/gMqXljA.jpg">
+			</a>
+			<audio class="song" autoplay volume="0" preload="auto" src="https://files.catbox.moe/lnw0nf.webm" start="47.2">oopsies!</audio>
+			<div class="songinfo">
+				Rocket Punch - BIM BAM BUM
+			</div>
+		</div>
+		<div class="card" id="pickypicky">
+			<a href="javascript:play('pickypicky')">
+				<img src="https://i.imgur.com/2i2zuva.jpg">
+			</a>
+			<audio class="song" autoplay volume="0" preload="auto" src="https://files.catbox.moe/y2ejb5.webm" start="51.64">oopsies!</audio>
+			<div class="songinfo">
+				Weki Meki - Picky Picky
+			</div>
+		</div>
+		<div class="card" id="daydream">
+			<a href="javascript:play('daydream')">
+				<img src="https://i.imgur.com/kdjLL3n.jpg">
+			</a>
+			<audio class="song" autoplay volume="0" preload="auto" src="https://files.catbox.moe/9yn2fr.webm" start="54.44">oopsies!</audio>
+			<div class="songinfo">
+				IZ*ONE - DAYDREAM
+			</div>
+		</div>
+		<div class="card" id="dramatic">
+			<a href="javascript:play('dramatic')">
+				<img src="https://i.imgur.com/e40oVNN.jpg">
+			</a>
+			<audio class="song" autoplay volume="0" preload="auto" src="https://files.catbox.moe/d49aha.webm" start="45.6">oopsies!</audio>
+			<div class="songinfo">
+				BVNDIT - Dramatic
+			</div>
+		</div>
+		<div class="card" id="sahara">
+			<a href="javascript:play('sahara')">
+				<img src="https://i.imgur.com/QOYVc6O.jpg">
+			</a>
+			<audio class="song" autoplay volume="0" preload="auto" src="https://files.catbox.moe/oph7r9.webm" start="53.64">oopsies!</audio>
+			<div class="songinfo">
+				Dreamcatcher - Sahara
+			</div>
+		</div>
+		<div class="card" id="oh_my_god">
+			<a href="javascript:play('oh_my_god')">
+				<img src="https://i.imgur.com/Dg4g9Xx.jpg">
+			</a>
+			<audio class="song" autoplay volume="0" preload="auto" src="https://files.catbox.moe/kneawp.webm" start="51.45">oopsies!</audio>
+			<div class="songinfo">
+				(G)I-DLE - Oh my god
+			</div>
+		</div>
+		<div class="card" id="하루에_세번">
+			<a href="javascript:play('하루에_세번')">
+				<img src="https://i.imgur.com/1l14Ra3.jpg">
+			</a>
+			<audio class="song" autoplay volume="0" preload="auto" src="https://files.catbox.moe/kud9qj.webm" start="59.45">oopsies!</audio>
+			<div class="songinfo">
+				Twice - 하루에 세번
+			</div>
+		</div>
+		<div class="card" id="pianoman">
+			<a href="javascript:play('pianoman')">
+				<img src="https://i.imgur.com/rkSEH3u.jpg">
+			</a>
+			<audio class="song" autoplay volume="0" preload="auto" src="https://files.catbox.moe/5cqmb5.webm" start="64.6">oopsies!</audio>
+			<div class="songinfo">
+				Mamamoo - Piano Man
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+const PAGES  = document.querySelector('#pages')
+const AUDIOS = document.querySelectorAll('.song')
+const VOLUME_KEY = 'max_volume'
+
+// did autoplay for all of them to try to preload
+AUDIOS.forEach(a => a.pause())
+
+let max_vol = parseFloat(window.localStorage.getItem(VOLUME_KEY))
+if (!max_vol)
+	max_vol = 0.5
+
+let curr = null
+
+window.addEventListener('keydown', function(e) {
+
+	console.log(e.key)
+
+	if (e.key === 'ArrowLeft')
+		max_vol = Math.max(0, max_vol - 0.1)
+	else if (e.key === 'ArrowRight')
+		max_vol = Math.min(1, max_vol + 0.1)
+	else
+		return
+
+	curr.volume = max_vol
+	window.localStorage.setItem(VOLUME_KEY, max_vol)
+})
+
+function play(song_id) {
+	const to_play = document.querySelector(`#${song_id} audio`)
+
+	if (!to_play)
+		return;
+
+	if (to_play == curr) {
+		linFade(curr, 0, 500, 25)
+		curr = null;
+		return;
+	}
+
+	to_play.currentTime = to_play.getAttribute('start')
+	to_play.volume = 0
+	to_play.play()
+
+	linFade(to_play, max_vol, 250, 25)
+	linFade(curr, 0, 500, 25)
+
+	curr = to_play
+}
+
+function linFade(audio, end_vol, ms, smooth=100) {
+
+	if (audio == null)
+		return
+
+	const start_vol = audio.volume;
+	const start_time = Date.now()
+	const ending_time = ms + start_time
+
+	let code;
+
+	const update = () => {
+		const curr_time = Date.now()
+
+		if (ending_time < curr_time) {
+			clearInterval(code)
+
+			audio.volume = end_vol
+
+			if(end_vol == 0)
+				audio.pause()
+		}
+
+		const calculated_vol = start_vol + (curr_time - start_time) / (ending_time - start_time) * (end_vol - start_vol)
+
+		if(0 < calculated_vol && calculated_vol < 1) {
+			audio.volume = calculated_vol
+		}
+
+	}
+
+	code = setInterval(update, ms/smooth)
+}
+</script>
